@@ -621,30 +621,30 @@
                             </form> -->
 
                             <form id="contactForm" action="send_email.php" method="POST">
-    <div class="row mt-5">
-        <div class="col-md-6">
-            <div class="input-group">
-                <i class="bi bi-person-fill text-dark d-flex bg-secondary-1 py-3 rounded-start-4 ps-3 align-items-center"></i>
-                <input type="text" name="name" class="form-control border-0 rounded-end-4 bg-secondary-1" placeholder="Your name" required>
-            </div>
-        </div>
-        <div class="col-md-6 mt-3 mt-md-0">
-            <div class="input-group">
-                <i class="bi bi-envelope-open-fill text-dark d-flex bg-secondary-1 py-3 rounded-start-4 ps-3 align-items-center"></i>
-                <input type="email" name="email" class="form-control border-0 rounded-end-4 bg-secondary-1" placeholder="Your email" required>
-            </div>
-        </div>
-        <div class="col-12">
-            <div class="input-group mt-3">
-                <i class="bi bi-pencil-fill text-dark bg-secondary-1 rounded-start-4 pt-3 ps-3 d-flex align-items-start"></i>
-                <textarea name="message" class="form-control border-0 rounded-end-4 bg-secondary-1 rounded-0 pb-10 pt-3" placeholder="Describe Your Project in Short" required></textarea>
-            </div>
-        </div>
-        <div class="col-12">
-            <button type="submit" class="btn btn-dark mt-3">Contact Now</button>
-        </div>
-    </div>
-</form>
+                            <div class="row mt-5">
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                        <i class="bi bi-person-fill text-dark d-flex bg-secondary-1 py-3 rounded-start-4 ps-3 align-items-center"></i>
+                                        <input type="text" name="name" class="form-control border-0 rounded-end-4 bg-secondary-1" placeholder="Your name" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mt-3 mt-md-0">
+                                    <div class="input-group">
+                                        <i class="bi bi-envelope-open-fill text-dark d-flex bg-secondary-1 py-3 rounded-start-4 ps-3 align-items-center"></i>
+                                        <input type="email" name="email" class="form-control border-0 rounded-end-4 bg-secondary-1" placeholder="Your email" required>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="input-group mt-3">
+                                        <i class="bi bi-pencil-fill text-dark bg-secondary-1 rounded-start-4 pt-3 ps-3 d-flex align-items-start"></i>
+                                        <textarea name="message" class="form-control border-0 rounded-end-4 bg-secondary-1 rounded-0 pb-10 pt-3" placeholder="Describe Your Project in Short" required></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-dark mt-3">Contact Now</button>
+                                </div>
+                            </div>
+                            </form>
 
                         </div>
                     </div>
@@ -729,29 +729,7 @@
         </div>
     </footer>
     <!-- Scroll top -->
-    <script>
-    document.getElementById("contactForm").addEventListener("submit", function(event) {
-        event.preventDefault(); // Stop form from submitting
-
-        let name = document.querySelector("input[name='name']").value.trim();
-        let email = document.querySelector("input[name='email']").value.trim();
-        let message = document.querySelector("textarea[name='message']").value.trim();
-        let recaptchaResponse = document.querySelector(".g-recaptcha-response").value;
-
-        if (!name || !email || !message) {
-            alert("Please fill in all fields.");
-            return;
-        }
-
-        if (!recaptchaResponse) {
-            alert("Please complete the reCAPTCHA.");
-            return;
-        }
-
-        this.submit(); // Submit the form after validation
-    });
-</script>
-
+  
 
  <div class="btn-scroll-top">
         <svg class="progress-square svg-content" width="100%" height="100%" viewBox="0 0 40 40">
@@ -779,7 +757,38 @@
     <!-- Theme JS -->
     <script src="assets/js/gsap-custom.js"></script>
     <script src="assets/js/main.js"></script>
-
+    <script>
+        document.getElementById("contactForm").addEventListener("submit", function (event) {
+            let isValid = true;
+    
+            // Name validation
+            let name = document.getElementsByName("name")[0].value.trim();
+            if (name === "") {
+                alert("Please enter your name.");
+                isValid = false;
+            }
+    
+            // Email validation
+            let email = document.getElementsByName("email")[0].value.trim();
+            let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+            if (!email.match(emailPattern)) {
+                alert("Please enter a valid email address.");
+                isValid = false;
+            }
+    
+            // Message validation
+            let message = document.getElementsByName("message")[0].value.trim();
+            if (message === "") {
+                alert("Please enter your message.");
+                isValid = false;
+            }
+    
+            if (!isValid) {
+                event.preventDefault(); // Prevent form submission if validation fails
+            }
+        });
+    </script>
+    
     <!-- Other scripts -->
 </body>
 
