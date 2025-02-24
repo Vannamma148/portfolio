@@ -12913,7 +12913,7 @@ a.text-hover-white:hover {
     font-size: 54px !important;
   }
   .fs-96{
-    font-size: 40px;
+    font-size: 40px !important;
   }
   .icon_140 {
     width: 100px;
