@@ -12912,6 +12912,9 @@ a.text-hover-white:hover {
   .fs-170 {
     font-size: 54px !important;
   }
+  .fs-96{
+    font-size: 40px;
+  }
   .icon_140 {
     width: 100px;
     height: 100px;
@@ -12920,6 +12923,7 @@ a.text-hover-white:hover {
   .fs-250 {
     font-size: 130px !important;
   }
+  
   .fs-230 {
     font-size: 125px !important;
   }
